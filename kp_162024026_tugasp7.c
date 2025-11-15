@@ -113,14 +113,15 @@ void biner_ke_heksa(char biner[]) {
 void desimal_ke_biner(int bil_input) {
     int biner_array[MAX_BIT];
     int i = 0; 
-    int nilai_saat_ini = bil_input;
 
     while (bil_input > 0) {
+        int nilai_saat_ini = bil_input;
+
         int bil_sisa = bil_input % 2; 
-        int hasil_bagi = bil_input /= 2;
-        printf("%d dibagi 2 = %d, Sisa: %d\n", nilai_saat_ini, hasil_bagi, bil_sisa);
+        int hasil_bagi = bil_input / 2;
         
-        nilai_saat_ini = hasil_bagi;
+        printf("%d dibagi 2 = %d, Sisa: %d\n", nilai_saat_ini, hasil_bagi, bil_sisa);
+        bil_input /= 2;
         biner_array[i] = bil_sisa; 
         i++; 
     }
@@ -358,13 +359,11 @@ void heksa_ke_biner(char heksa_input[]) {
             case 6: printf("0110"); break;
             case 7: printf("0111"); break;
             case 8: printf("1000"); break;
-            case 9: printf("1001"); break;                
-            case 10: printf("1010"); break;
+            case 9: printf("1001"); break;                case 10: printf("1010"); break;
             case 11: printf("1011"); break;
             case 12: printf("1100"); break;
             case 13: printf("1101"); break;
-            case 14: printf("1110"); break;                
-            case 15: printf("1111"); break;
+            case 14: printf("1110"); break;                case 15: printf("1111"); break;
         }
     }
     
@@ -382,7 +381,7 @@ void heksa_ke_oktal(char heksa_input[]) {
         char heksa = heksa_input[i]; 
         int nilai_indeks;
 
-        if (heksa <= '9') {  //konversi char ke int (0=48, A=65)
+        if (heksa >= '0' && heksa <= '9') {  //konversi char ke int (0=48, A=65)
             nilai_indeks = heksa - '0'; 
         } else if (heksa >= 'A' && heksa <= 'F') {
             nilai_indeks = heksa - 'A' + 10; 
@@ -390,7 +389,7 @@ void heksa_ke_oktal(char heksa_input[]) {
             printf("Error: Input Heksadesimal tidak valid.\n");
         }
 
-        printf("Digit Heksa %c = %s", nilai_indeks, peta_biner[nilai_indeks]);
+        printf("Digit Heksa %c = %s", heksa, peta_biner[nilai_indeks]);
         printf("\n\n");
         strcat(biner, peta_biner[nilai_indeks]); 
     }
