@@ -115,13 +115,14 @@ void desimal_ke_biner(int bil_input) {
     int i = 0; 
 
     while (bil_input > 0) {
-        int nilai_saat_ini = bil_input;
-
         int bil_sisa = bil_input % 2; 
-        int hasil_bagi = bil_input / 2;
+        int nilai_sebelum_bagi = bil_input; 
         
-        printf("%d dibagi 2 = %d, Sisa: %d\n", nilai_saat_ini, hasil_bagi, bil_sisa);
-        bil_input /= 2;
+        int hasil_bagi = bil_input / 2;
+
+        printf("%d dibagi 2 = %d, Sisa: %d\n", nilai_sebelum_bagi, hasil_bagi, bil_sisa);
+        
+        bil_input = hasil_bagi; 
         biner_array[i] = bil_sisa; 
         i++; 
     }
